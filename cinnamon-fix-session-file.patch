@@ -1,0 +1,12 @@
+diff -urN a/files/usr/share/gnome-session/sessions/cinnamon.session b/files/usr/share/gnome-session/sessions/cinnamon.session
+--- a/files/usr/share/gnome-session/sessions/cinnamon.session	2012-01-18 22:20:20.000000000 +0000
++++ b/files/usr/share/gnome-session/sessions/cinnamon.session	2012-01-24 13:06:40.115318214 +0000
+@@ -1,7 +1,7 @@
+ [GNOME Session]
+ Name=Cinnamon
+ RequiredComponents=cinnamon;gnome-settings-daemon;
+-IsRunnableHelper=/usr/lib/gnome-session/gnome-session-check-accelerated
++IsRunnableHelper=/usr/lib/gnome-session-check-accelerated
+ FallbackSession=gnome-fallback
+ DesktopName=GNOME
+ 
