@@ -1,7 +1,7 @@
 Summary:	A Linux Desktop similar to GNOME2 based on gnome-shell technology
 Name:		cinnamon
 Version:	1.6.7
-Release:	1
+Release:	2
 License:	GPLv2+
 Url:		https://github.com/linuxmint/Cinnamon/tags
 Group:		Graphical desktop/GNOME
