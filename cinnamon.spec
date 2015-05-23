@@ -1,141 +1,252 @@
-Summary:	A Linux Desktop similar to GNOME2 based on gnome-shell technology
-Name:		cinnamon
-Version:	1.6.7
-Release:	2
-License:	GPLv2+
-Url:		https://github.com/linuxmint/Cinnamon/tags
-Group:		Graphical desktop/GNOME
-Source0:	%{name}-%{version}.tar.gz
-# -- PATCH-FIX-OPENSUSE cinnamon-fix-session-file.patch nmarques@opensuse.org
-#    easy fix: we have 'gnome-session-check-accelerated' in _libexecdir
-#Patch0:	cinnamon-fix-session-file.patch
+%global _internal_version  1ba284b
+%define date 20141127
 
-BuildRequires:	intltool
-BuildRequires:	gnome-common
-BuildRequires:	pkgconfig(clutter-glx-1.0)
-BuildRequires:	pkgconfig(clutter-x11-1.0)
-BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(folks)
-BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(gjs-internals-1.0)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gnome-bluetooth-1.0)
-BuildRequires:	pkgconfig(gnome-desktop-3.0)
-BuildRequires:	pkgconfig(gnome-keyring-1)
-BuildRequires:	pkgconfig(gstreamer-0.10)
-BuildRequires:	pkgconfig(gstreamer-base-0.10)
-BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(gudev-1.0)
-BuildRequires:	pkgconfig(libcanberra)
-BuildRequires:	pkgconfig(libcroco-0.6)
-BuildRequires:	pkgconfig(libgnome-menu-3.0)
-BuildRequires:	pkgconfig(libedataserverui-3.0)
-BuildRequires:	pkgconfig(libmuffin)
-BuildRequires:	pkgconfig(libnm-glib)
-BuildRequires:	pkgconfig(libnm-util)
-BuildRequires:	pkgconfig(libpulse)
-BuildRequires:	pkgconfig(libpulse-mainloop-glib)
-BuildRequires:	pkgconfig(libsoup-2.4)
-BuildRequires:	pkgconfig(libstartup-notification-1.0)
-BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	pkgconfig(polkit-agent-1)
-BuildRequires:	pkgconfig(telepathy-glib)
-BuildRequires:	pkgconfig(telepathy-logger-0.2)
+Name:           cinnamon
+Version:        2.6.2
+Release:        1
+Summary:        Window management and application launching for Cinnamon
 
-Suggests:	%{name}-browser-plugins = %{version}
-Requires:	gnome-session
-Requires:	muffin
-# -- used by cinnamon-settings
-Requires:	gnome-python-gconf
+Group:          Graphical desktop/Cinnamon
+# cinnamon-menu-editor is LGPLv2+
+License:        GPLv2+ and LGPLv2+
+URL:            http://cinnamon.linuxmint.com
+# To generate tarball
+
+Source0:        Cinnamon-%{version}.tar.gz
+Source3:        polkit-cinnamon-authentication-agent-1.desktop
+Source5:        10cinnamon
+Source6:        11cinnamon2d
+# fix power applet using version by robin92
+# https://github.com/linuxmint/Cinnamon/issues/3068
+#Source7:        power-applet.js
+
+# from fedora
+Patch0:         background.patch
+Patch1:         autostart.patch
+
+%global clutter_version 1.7.5
+%global gobject_introspection_version 0.10.1
+%global muffin_version 1.9.1
+%global eds_version 2.91.6
+%global json_glib_version 0.13.2
+%global polkit_version 0.100
+
+BuildRequires:  pkgconfig(clutter-x11-1.0) >= %{clutter_version}
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gconf-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
+BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
+BuildRequires:  pkgconfig(libnm-glib)
+BuildRequires:  pkgconfig(libnm-util)
+BuildRequires:  pkgconfig(polkit-agent-1) >= %{polkit_version}
+BuildRequires:  pkgconfig(gudev-1.0)
+# for screencast recorder functionality
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  intltool
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.2
+BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libnm-glib-vpn)
+BuildRequires:  pkgconfig(libstartup-notification-1.0)
+
+# for barriers
+BuildRequires:  pkgconfig(xfixes) >= 5.0
+# used in unused BigThemeImage
+BuildRequires:  librsvg2-devel
+BuildRequires:  pkgconfig(libmuffin) >= %{muffin_version}
+BuildRequires:  pulseaudio-devel
+# Bootstrap requirements
+BuildRequires: gtk-doc 
+BuildRequires: gnome-common
+
+BuildRequires:  pkgconfig(libwacom)
+BuildRequires:  pkgconfig(xorg-wacom)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(cjs-internals-1.0)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(cinnamon-desktop) >= 2.0.4
+BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
+
+#required for applet fix
+BuildRequires:  patchelf
+BuildRequires:  chrpath
+
+Requires:       cinnamon-menus
+# wrapper script uses to restart old GNOME session if run --replace
+# from the command line
+Requires:       gobject-introspection >= %{gobject_introspection_version}
+# needed for loading SVG's via gdk-pixbuf
+#Requires:       librsvg2%{?_isa}
+# needed as it is now split from Clutter
+Requires:       json-glib >= %{json_glib_version}
+# might be still be needed.
+Requires:       muffin >= %{muffin_version}
+# Get upower 1.0 api changes
+Requires:       upower >= 0.99.0
+Requires:       polkit >= 0.100
+# needed for session files
+# cinnamon-session version fixes location of helper app
+Requires:       cinnamon-session
+# needed for schemas
+Requires:       at-spi2-atk
+# needed for on-screen keyboard
+Requires:       caribou
+# needed for settings
+Requires:       python-gobject
+Requires:       dbus-python
+Requires:       python-lxml
+Requires:       gnome-python-gconf
+Requires:       python-imaging
+Requires:       python-pam
+Requires:       python-pexpect
+Requires:       python-pillow
+Requires:       cinnamon-control-center
+Requires:       cinnamon-screensaver
+Requires:       cinnamon-translations
+# fix 10916
+Requires:       gnome-themes-standard
+# fix cinnamon startup crashes
+Requires:       typelib(fontconfig)
+# include cjs introspection
+Requires:       cjs
+# Mate polkit
+Requires:       mate-polkit
+# requires for keyboard applet
+Requires:       gucharmap
+
+# required for network applet
+Requires:       networkmanager-applet
+#needed for cinnamon-looking-glass
+Requires:       python-pyinotify
+#needed for cinnamon-json-makepot
+Requires:       python-polib
+
+# cinnamon handles notifications natively, no notification-daemon needed
+Provides:       virtual-notification-daemon
+# and ditto for polkit authorisation dialogs
+Provides:       polkit-agent
 
 %description
-Cinnamon is a Linux Desktop which provides advanced innovative features
-and a traditional user experience.
-The underlying technology is forked from gnome-shell and the Desktop
-layout is similar to GNOME2. The emphasis is put on making users feel
-at home and providing them with an easy to use and confortable Desktop
-experience.
+Cinnamon is a Linux desktop which provides advanced
+ innovative features and a traditional user experience.
 
-%package browser-plugins
-Summary:	Browser plugins for the Cinnamon Desktop
-Group:		Graphical desktop/GNOME
-
-%description browser-plugins
-Cinnamon is a Linux Desktop which provides advanced innovative features
-and a traditional user experience.
-
-This package provides the browser plugins for Cinnamon.
+The desktop layout is similar to Gnome 2. 
+The underlying technology is forked from Gnome Shell.
+The emphasis is put on making users feel at home and providing
+ them with an easy to use and comfortable desktop experience.
 
 %prep
-%setup -qn Cinnamon-%{version}
-%apply_patches
+%setup -q -n Cinnamon-%{version}
+%patch0 -p1
+%patch1 -p1
 
-# true debian style /usr/lib is hardcoded
-sed -i -e 's|/usr/lib|%{_datadir}|g' \
-	files/generate_desktop_files \
-	files/usr/share/gnome-session/sessions/cinnamon.session \
-	files/usr/lib/cinnamon-settings/cinnamon-settings.py \
-	files/usr/lib/cinnamon-menu-editor/Alacarte/config.py \
-	files/usr/lib/cinnamon-menu-editor/Alacarte/MainWindow.py \
-	files/usr/bin/cinnamon-settings \
-	files/usr/bin/cinnamon-menu-editor
+# remove gschema
+rm -rf data/org.cinnamon.gschema.xml
+# move items to /usr/share
+mv files/usr/lib/* files%{_datadir}
+grep -r -l /usr/lib files%{_datadir} files%{_bindir}  | \
+     xargs sed -i -e 's@/usr/lib@/usr/share@g'
+sed -i -e 's@/usr/share/cinnamon-control-center-1/panels@%{_libdir}/cinnamon-control-center-1/panels@g' files/usr/share/cinnamon-settings/bin/capi.py
+sed -i -e 's@/usr/lib@/usr/share@g' js/ui/panel.js cinnamon.pot
+sed -i -e 's@-OOt@-t@g' files%{_bindir}/cinnamon-menu-editor
+rm -rf files/usr/lib
+
+# have cinnamon use mageia app system
+grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
+xargs sed -i -e 's@cinnamon-applications@applications@g' 
+
+%{__mkdir_p} files%{_sysconfdir}/X11/wmsession.d
+install -pm 644 %SOURCE5 %SOURCE6 files%{_sysconfdir}/X11/wmsession.d
+
+# files replaced with mageia files
+rm -rf files%{_sysconfdir}/xdg
+rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
+
+rm -f configure
+rm -rf debian/
+
+NOCONFIGURE=1 ./autogen.sh
+
+sed -i 's/python/python2/' docs/reference/cinnamon-js/gen_doc.py
 
 %build
-export BROWSER_PLUGIN_DIR=%{_libdir}/browser-plugins
-NOCONFIGURE=1 ./autogen.sh
-%configure2_5x \
-	--enable-compile-warnings=yes \
-	--disable-static \
-	--disable-rpath \
-	--enable-introspection=yes \
-	--with-ca-certificates=%{_sysconfdir}/ssl/ca-bundle.pem
+export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 
-%make LIBS='-lgmodule-2.0'
+%configure2_5x \
+--disable-static \
+--disable-rpath \
+--enable-compile-warnings=yes \
+--enable-introspection=yes 
+%make V=1
 
 %install
 %makeinstall_std
-find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
-%find_lang %{name}
 
-# hmmm
-rm -f %{buildroot}%{_datadir}/gnome-session/sessions/cinnamon.session.0000~
+# Remove .la file
+rm -rf %{buildroot}/%{_libdir}/cinnamon/libcinnamon.la
 
-# MD
-mv %{buildroot}/%{_prefix}/lib/cinnamon-menu-editor \
-	%{buildroot}/%{_prefix}/lib/cinnamon-settings \
-	%{buildroot}%{_datadir}	
+# install polkik autostart desktop file
+install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/applications/
+
+desktop-file-validate %{buildroot}%{_datadir}/applications/cinnamon.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/cinnamon2d.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/polkit-cinnamon-authentication-agent-1.desktop
+
+desktop-file-install                                 \
+ --add-category="Utility"                            \
+ --remove-category="DesktopSettings"                 \
+ --remove-key="Encoding"                             \
+ --add-only-show-in="GNOME"                          \
+ --delete-original                                   \
+ --dir=%{buildroot}%{_datadir}/applications       \
+ %{buildroot}%{_datadir}/applications/*
+
+# fix hard coded path
+%ifarch x86_64
+sed -i -e 's@/usr/lib/cinnamon-control-center@/usr/lib64/cinnamon-control-center@g' \
+  %{buildroot}%{_datadir}/cinnamon-settings/bin/capi.py
+%endif
+
+# kill upstream xsession file.
+# If we leave this it overrides our one, preventing the run of /etc/X11/Xsession
+# and thus the processing of /etc/X11/xinit.d/ files.
+# See: https://bugs.mageia.org/show_bug.cgi?id=11582
+rm -rf %{buildroot}%{_datadir}/xsessions
+
+# fix rpath for CinnamonJS
+# see http://bugzilla.opensuse.org/show_bug.cgi?id=904414
+chrpath -d %{buildroot}%{_bindir}/cinnamon
+patchelf --force-rpath --set-rpath %{_libdir}/cinnamon %{buildroot}%{_bindir}/cinnamon
+chrpath -l %{buildroot}%{_bindir}/cinnamon
+
+
+%find_lang %{name} || touch %{name}.lang
 
 %files -f %{name}.lang
 %doc COPYING README
-%config %{_sysconfdir}/xdg/menus/cinnamon-applications.menu
-%config %{_sysconfdir}/xdg/menus/cinnamon-settings.menu
-%{_bindir}/cinnamon
-%{_bindir}/cinnamon2d
-%{_bindir}/cinnamon-launcher
-%{_bindir}/cinnamon-extension-tool
-%{_bindir}/cinnamon-menu-editor
-%{_bindir}/cinnamon-settings
-%{_bindir}/gnome-session-cinnamon
-%{_bindir}/gnome-session-cinnamon2d
+%{_bindir}/*
+%{_sysconfdir}/X11/wmsession.d/*cinnamon*
+%{_sysconfdir}/cinnamon/preload/iconthemes.d/cinnamon.list
+%{_datadir}/desktop-directories/cinnamon-*.directory
+%{_datadir}/glib-2.0/schemas/*
+%{_datadir}/applications/*
+%{_datadir}/icons/hicolor/16x16/*/cs-*.svg
+%{_datadir}/icons/hicolor/scalable/*/cs-*.svg
+%{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
+%{_datadir}/cinnamon/
+%{_datadir}/cinnamon-*/
+%{_datadir}/gtk-doc/html/cinnamon*
+%{_datadir}/dbus-1/services/org.Cinnamon.*.service
 %{_libdir}/cinnamon/
-%{_datadir}/cinnamon/applets
-%{_datadir}/cinnamon/js
-%{_datadir}/cinnamon/search_providers
-%{_datadir}/cinnamon/shaders
-%{_datadir}/cinnamon/theme
-%{_datadir}/cinnamon-menu-editor/
-%{_datadir}/cinnamon-settings/
-%{_datadir}/applications/*.desktop
-%{_datadir}/dbus-1/services/*.service
-%{_datadir}/desktop-*
-%{_datadir}/glib-2.0/schemas/org.cinnamon.gschema.xml
-%{_datadir}/gnome-session/sessions/cinnamon.session
-%{_datadir}/gnome-session/sessions/cinnamon2d.session
-%{_datadir}/xsessions/cinnamon.desktop
-%{_datadir}/xsessions/cinnamon2d.desktop
-%{_mandir}/man1/*
+%{_libexecdir}/cinnamon/
+%{_mandir}/man1/*.1.*
 
-%files browser-plugins
-%{_libdir}/browser-plugins/*.so
 
