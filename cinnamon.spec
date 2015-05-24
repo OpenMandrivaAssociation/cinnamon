@@ -31,6 +31,7 @@ Patch1:         autostart.patch
 %global json_glib_version 0.13.2
 %global polkit_version 0.100
 
+BuildConflicts: cinnamon
 BuildRequires:  pkgconfig(clutter-x11-1.0) >= %{clutter_version}
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  desktop-file-utils
