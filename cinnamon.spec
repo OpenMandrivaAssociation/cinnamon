@@ -3,7 +3,7 @@
 
 Name:           cinnamon
 Version:        2.6.2
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -101,9 +101,8 @@ Requires:       at-spi2-atk
 Requires:       caribou
 # needed for settings
 Requires:       python-gobject
-Requires:       dbus-python
+Requires:       python-dbus
 Requires:       python-lxml
-Requires:       gnome-python-gconf
 Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
