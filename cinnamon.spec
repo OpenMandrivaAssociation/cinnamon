@@ -1,9 +1,6 @@
-%global _internal_version  1ba284b
-%define date 20141127
-
 Name:           cinnamon
-Version:        2.6.2
-Release:        2
+Version:        3.0.7
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -21,8 +18,8 @@ Source6:        11cinnamon2d
 #Source7:        power-applet.js
 
 # from fedora
-Patch0:         background.patch
-Patch1:         autostart.patch
+#Patch0:         background.patch
+#Patch1:         autostart.patch
 
 %global clutter_version 1.7.5
 %global gobject_introspection_version 0.10.1
@@ -145,19 +142,7 @@ The emphasis is put on making users feel at home and providing
 
 %prep
 %setup -q -n Cinnamon-%{version}
-%patch0 -p1
-%patch1 -p1
-
-# remove gschema
-rm -rf data/org.cinnamon.gschema.xml
-# move items to /usr/share
-mv files/usr/lib/* files%{_datadir}
-grep -r -l /usr/lib files%{_datadir} files%{_bindir}  | \
-     xargs sed -i -e 's@/usr/lib@/usr/share@g'
-sed -i -e 's@/usr/share/cinnamon-control-center-1/panels@%{_libdir}/cinnamon-control-center-1/panels@g' files/usr/share/cinnamon-settings/bin/capi.py
-sed -i -e 's@/usr/lib@/usr/share@g' js/ui/panel.js cinnamon.pot
-sed -i -e 's@-OOt@-t@g' files%{_bindir}/cinnamon-menu-editor
-rm -rf files/usr/lib
+%apply_patches
 
 # have cinnamon use mageia app system
 grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
@@ -209,12 +194,6 @@ desktop-file-install                                 \
  --dir=%{buildroot}%{_datadir}/applications       \
  %{buildroot}%{_datadir}/applications/*
 
-# fix hard coded path
-%ifarch x86_64
-sed -i -e 's@/usr/lib/cinnamon-control-center@/usr/lib64/cinnamon-control-center@g' \
-  %{buildroot}%{_datadir}/cinnamon-settings/bin/capi.py
-%endif
-
 # kill upstream xsession file.
 # If we leave this it overrides our one, preventing the run of /etc/X11/Xsession
 # and thus the processing of /etc/X11/xinit.d/ files.
@@ -234,12 +213,10 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %doc COPYING README
 %{_bindir}/*
 %{_sysconfdir}/X11/wmsession.d/*cinnamon*
-%{_sysconfdir}/cinnamon/preload/iconthemes.d/cinnamon.list
 %{_datadir}/desktop-directories/cinnamon-*.directory
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
-%{_datadir}/icons/hicolor/16x16/*/cs-*.svg
-%{_datadir}/icons/hicolor/scalable/*/cs-*.svg
+%{_iconsdir}/hicolor/*/*/*.svg
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
 %{_datadir}/cinnamon/
 %{_datadir}/cinnamon-*/
