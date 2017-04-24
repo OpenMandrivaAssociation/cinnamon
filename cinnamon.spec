@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        3.0.7
-Release:        2
+Version:        3.2.8
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -154,8 +154,6 @@ rm -rf debian/
 
 NOCONFIGURE=1 ./autogen.sh
 
-sed -i 's/python/python2/' docs/reference/cinnamon-js/gen_doc.py
-
 %build
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 
@@ -200,7 +198,6 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %files -f %{name}.lang
 %doc COPYING README
 %{_bindir}/*
-%{_sysconfdir}/X11/wmsession.d/*cinnamon*
 %{_datadir}/desktop-directories/cinnamon-*.directory
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
