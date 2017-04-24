@@ -1,7 +1,0 @@
-NAME=Cinnamon 2D
-DESC=Cinnamon 2D
-EXEC=/usr/bin/cinnamon-session-cinnamon2d
-SCRIPT:
-exec /usr/bin/cinnamon-session-cinnamon2d
-
-

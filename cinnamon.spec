@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.0.7
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -11,8 +11,6 @@ URL:            http://cinnamon.linuxmint.com
 
 Source0:        Cinnamon-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
-Source5:        10cinnamon
-Source6:        11cinnamon2d
 # fix power applet using version by robin92
 # https://github.com/linuxmint/Cinnamon/issues/3068
 #Source7:        power-applet.js
@@ -147,9 +145,6 @@ The emphasis is put on making users feel at home and providing
 grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
 xargs sed -i -e 's@cinnamon-applications@applications@g' 
 
-%{__mkdir_p} files%{_sysconfdir}/X11/wmsession.d
-install -pm 644 %SOURCE5 %SOURCE6 files%{_sysconfdir}/X11/wmsession.d
-
 # files replaced with mageia files
 rm -rf files%{_sysconfdir}/xdg
 rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
@@ -168,7 +163,7 @@ export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 --disable-static \
 --disable-rpath \
 --enable-compile-warnings=yes \
---enable-introspection=yes 
+--enable-introspection=yes
 %make V=1
 
 %install
@@ -193,12 +188,6 @@ desktop-file-install                                 \
  --dir=%{buildroot}%{_datadir}/applications       \
  %{buildroot}%{_datadir}/applications/*
 
-# kill upstream xsession file.
-# If we leave this it overrides our one, preventing the run of /etc/X11/Xsession
-# and thus the processing of /etc/X11/xinit.d/ files.
-# See: https://bugs.mageia.org/show_bug.cgi?id=11582
-rm -rf %{buildroot}%{_datadir}/xsessions
-
 # fix rpath for CinnamonJS
 # see http://bugzilla.opensuse.org/show_bug.cgi?id=904414
 chrpath -d %{buildroot}%{_bindir}/cinnamon
@@ -221,6 +210,7 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_datadir}/cinnamon-*/
 %{_datadir}/gtk-doc/html/cinnamon*
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
+%{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
 %{_libexecdir}/cinnamon/
 %{_mandir}/man1/*.1.*

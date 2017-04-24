@@ -1,7 +1,0 @@
-NAME=Cinnamon
-DESC=Cinnamon
-EXEC=/usr/bin/cinnamon-session-cinnamon
-SCRIPT:
-exec /usr/bin/cinnamon-session-cinnamon
-
-
