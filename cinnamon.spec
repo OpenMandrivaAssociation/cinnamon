@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.2.8
-Release:        2
+Release:        3
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -78,6 +78,7 @@ Requires:       cinnamon-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
+Requires:	gksu
 # needed for loading SVG's via gdk-pixbuf
 #Requires:       librsvg2%{?_isa}
 # needed as it is now split from Clutter
@@ -95,6 +96,7 @@ Requires:       at-spi2-atk
 # needed for on-screen keyboard
 Requires:       caribou
 # needed for settings
+Requires:	python-cairo
 Requires:       python-gobject
 Requires:       python-dbus
 Requires:       python-lxml
