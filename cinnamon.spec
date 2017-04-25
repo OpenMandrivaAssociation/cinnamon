@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.2.8
-Release:        3
+Release:        4
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -97,13 +97,15 @@ Requires:       at-spi2-atk
 Requires:       caribou
 # needed for settings
 Requires:	python-cairo
-Requires:       python-gobject
+Requires:       python-gi
 Requires:       python-dbus
 Requires:       python-lxml
 Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
 Requires:       python-pillow
+Requires:	python2-imaging
+Requires:	python2-gi
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
