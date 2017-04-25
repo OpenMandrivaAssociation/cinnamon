@@ -78,6 +78,7 @@ Requires:       cinnamon-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
+Requires:	gnome-terminal
 Requires:	gksu
 # needed for loading SVG's via gdk-pixbuf
 #Requires:       librsvg2%{?_isa}
