@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.2.8
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -109,6 +109,8 @@ Requires:       cinnamon-translations
 Requires:       gnome-themes-standard
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
+Requires:       nemo
+
 # include cjs introspection
 Requires:       cjs
 # Mate polkit
@@ -122,6 +124,9 @@ Requires:       networkmanager-applet
 Requires:       python-pyinotify
 #needed for cinnamon-json-makepot
 Requires:       python-polib
+
+Requires:	typelib(Keybinder) = 3.0
+Requires:	libgnomekbd-common
 
 # cinnamon handles notifications natively, no notification-daemon needed
 Provides:       virtual-notification-daemon
