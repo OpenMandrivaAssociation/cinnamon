@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.2.8
-Release:        2
+Release:        5
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -78,6 +78,8 @@ Requires:       cinnamon-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
+Requires:	gnome-terminal
+Requires:	gksu
 # needed for loading SVG's via gdk-pixbuf
 #Requires:       librsvg2%{?_isa}
 # needed as it is now split from Clutter
@@ -95,13 +97,16 @@ Requires:       at-spi2-atk
 # needed for on-screen keyboard
 Requires:       caribou
 # needed for settings
-Requires:       python-gobject
+Requires:	python-cairo
+Requires:       python-gi
 Requires:       python-dbus
 Requires:       python-lxml
 Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
 Requires:       python-pillow
+Requires:	python2-imaging
+Requires:	python2-gi
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
@@ -109,6 +114,8 @@ Requires:       cinnamon-translations
 Requires:       gnome-themes-standard
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
+Requires:       nemo
+
 # include cjs introspection
 Requires:       cjs
 # Mate polkit
@@ -122,6 +129,9 @@ Requires:       networkmanager-applet
 Requires:       python-pyinotify
 #needed for cinnamon-json-makepot
 Requires:       python-polib
+
+Requires:	typelib(Keybinder) = 3.0
+Requires:	libgnomekbd-common
 
 # cinnamon handles notifications natively, no notification-daemon needed
 Provides:       virtual-notification-daemon
