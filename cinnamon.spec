@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        3.2.8
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -18,7 +18,7 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 # from fedora
 #Patch0:         background.patch
 #Patch1:         autostart.patch
-
+Patch1:		webkit_dep.patch
 %global clutter_version 1.7.5
 %global gobject_introspection_version 0.10.1
 %global muffin_version 1.9.1
