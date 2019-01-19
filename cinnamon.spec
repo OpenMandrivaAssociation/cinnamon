@@ -65,7 +65,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(cjs-internals-1.0)
+BuildRequires:  pkgconfig(cjs-1.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
