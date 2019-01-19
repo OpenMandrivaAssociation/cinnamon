@@ -8,3 +8,23 @@
      // So instead we will used the title as a tooltip.
      getToolTip: function() {
          return this._indicator.title;
+--- Cinnamon-4.0.9/js/ui/extension.js.orig	2019-01-16 19:55:27.453320807 +0000
++++ Cinnamon-4.0.9/js/ui/extension.js	2019-01-16 19:55:53.744322779 +0000
+@@ -247,7 +247,7 @@
+                     this.dir = dir;
+                     this.meta.path = this.dir.get_path();
+ 
+-                    // If an xlet has known usage of imports.gi.NMClient, we require them to have a
++                    // If an xlet has known usage of gi.NMClient, we require them to have a
+                     // 4.0 directory. It is the only way to assume they are patched for Cinnamon 4 from here.
+                     if (isPotentialNMClientConflict && this.meta.path.indexOf(`/4.0`) === -1) {
+                         throw new Error(`Found unpatched usage of imports.gi.NMClient for ${this.lowerType} ${uuid}`);
+@@ -256,7 +256,7 @@
+                     return finishLoad();
+                 });
+             } else if (isPotentialNMClientConflict) {
+-                throw new Error(`Found un-versioned ${this.lowerType} ${uuid} with known usage of imports.gi.NMClient`);
++                throw new Error(`Found un-versioned ${this.lowerType} ${uuid} with known usage of gi.NMClient`);
+             }
+             return finishLoad();
+         }).then((moduleIndex) => {
