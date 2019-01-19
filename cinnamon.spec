@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        3.2.8
-Release:        5
+Version:        4.0.9
+Release: 1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -30,9 +30,9 @@ BuildRequires:  pkgconfig(clutter-x11-1.0) >= %{clutter_version}
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
 BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
+BuildRequires:	pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnm-glib)
 BuildRequires:  pkgconfig(libnm-util)
 BuildRequires:  pkgconfig(polkit-agent-1) >= %{polkit_version}
@@ -79,7 +79,6 @@ Requires:       cinnamon-menus
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
 Requires:	gnome-terminal
-Requires:	gksu
 # needed for loading SVG's via gdk-pixbuf
 #Requires:       librsvg2%{?_isa}
 # needed as it is now split from Clutter
@@ -206,7 +205,7 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %find_lang %{name} || touch %{name}.lang
 
 %files -f %{name}.lang
-%doc COPYING README
+%doc COPYING README.rst
 %{_bindir}/*
 %{_datadir}/desktop-directories/cinnamon-*.directory
 %{_datadir}/glib-2.0/schemas/*

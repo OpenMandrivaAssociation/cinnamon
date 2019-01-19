@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   Cinnamon-3.2.8.tar.gz: 2113f46d707979b587d2691d1bc8e1ec00a36b12
+sources:
+  Cinnamon-4.0.9.tar.gz: f5a0855356078cd5c325743c1408ae4ed6db0a4d
