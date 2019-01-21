@@ -19,14 +19,12 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 #Patch0:         background.patch
 #Patch1:         autostart.patch
 Patch1:		webkit_dep.patch
-%global clutter_version 1.7.5
 %global gobject_introspection_version 0.10.1
-%global muffin_version 1.9.1
+%global muffin_version 4.0.2
 %global eds_version 2.91.6
 %global json_glib_version 0.13.2
 %global polkit_version 0.100
 
-BuildRequires:  pkgconfig(clutter-x11-1.0) >= %{clutter_version}
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(glib-2.0)
