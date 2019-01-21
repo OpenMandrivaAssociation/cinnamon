@@ -78,8 +78,6 @@ Requires:       cinnamon-menus
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
 Requires:	gnome-terminal
-# needed for loading SVG's via gdk-pixbuf
-#Requires:       librsvg2%{?_isa}
 # needed as it is now split from Clutter
 Requires:       json-glib >= %{json_glib_version}
 # might be still be needed.
@@ -201,9 +199,7 @@ patchelf --force-rpath --set-rpath %{_libdir}/cinnamon %{buildroot}%{_bindir}/ci
 chrpath -l %{buildroot}%{_bindir}/cinnamon
 
 
-%find_lang %{name} || touch %{name}.lang
-
-%files -f %{name}.lang
+%files
 %doc COPYING README.rst
 %{_bindir}/*
 %{_datadir}/desktop-directories/cinnamon-*.directory
