@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.0.9
-Release: 1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -110,6 +110,7 @@ Requires:       cinnamon-translations
 Requires:       gnome-themes-standard
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
+Requires:       typelib(Soup)
 Requires:       nemo
 
 # include cjs introspection
