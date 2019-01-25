@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.0.9
-Release:        2
+Release:        3
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -196,7 +196,7 @@ desktop-file-install                                 \
 # fix rpath for CinnamonJS
 # see http://bugzilla.opensuse.org/show_bug.cgi?id=904414
 chrpath -d %{buildroot}%{_bindir}/cinnamon
-patchelf --force-rpath --set-rpath %{_libdir}/cinnamon %{buildroot}%{_bindir}/cinnamon
+patchelf --force-rpath --set-rpath %{_libdir}/cinnamon:%{_libdir}/muffin %{buildroot}%{_bindir}/cinnamon
 chrpath -l %{buildroot}%{_bindir}/cinnamon
 
 
