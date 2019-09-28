@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.0.9
-Release:        4
+Release:        5
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -31,8 +31,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
 BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
 BuildRequires:	pkgconfig(libnm)
-BuildRequires:  pkgconfig(libnm-glib)
-BuildRequires:  pkgconfig(libnm-util)
 BuildRequires:  pkgconfig(polkit-agent-1) >= %{polkit_version}
 BuildRequires:  pkgconfig(gudev-1.0)
 # for screencast recorder functionality
@@ -43,7 +41,6 @@ BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.2
 BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(libnm-glib-vpn)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 
 # for barriers
