@@ -154,6 +154,8 @@ xargs sed -i -e 's@cinnamon-applications@applications@g'
 rm -rf files%{_sysconfdir}/xdg
 rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
 
+sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
+
 rm -f configure
 rm -rf debian/
 
