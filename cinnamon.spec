@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        4.0.9
-Release:        6
+Version:        4.2.4
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -9,7 +9,7 @@ License:        GPLv2+ and LGPLv2+
 URL:            http://cinnamon.linuxmint.com
 # To generate tarball
 
-Source0:        Cinnamon-%{version}.tar.gz
+Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
 # fix power applet using version by robin92
 # https://github.com/linuxmint/Cinnamon/issues/3068
@@ -64,7 +64,8 @@ BuildRequires:  pkgconfig(cjs-1.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
-BuildRequires:	pkgconfig(mozjs-52)
+BuildRequires:	 pkgconfig(mozjs-52)
+BuildRequires:  egl-devel
 
 #required for applet fix
 BuildRequires:  patchelf
@@ -143,8 +144,8 @@ The emphasis is put on making users feel at home and providing
  them with an easy to use and comfortable desktop experience.
 
 %prep
-%setup -q -n Cinnamon-%{version}
-%apply_patches
+%setup -q -n cinnamon-%{version}
+%autopatch -p1
 
 # have cinnamon use mageia app system
 grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
@@ -164,15 +165,15 @@ NOCONFIGURE=1 ./autogen.sh
 %build
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 
-%configure2_5x \
+%configure \
 --disable-static \
 --disable-rpath \
 --enable-compile-warnings=yes \
 --enable-introspection=yes
-%make V=1
+%make_build V=1
 
 %install
-%makeinstall_std
+%make_install
 
 # Remove .la file
 rm -rf %{buildroot}/%{_libdir}/cinnamon/libcinnamon.la
