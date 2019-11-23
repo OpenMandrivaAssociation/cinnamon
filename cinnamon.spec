@@ -91,7 +91,7 @@ Requires:       at-spi2-atk
 # needed for on-screen keyboard
 Requires:       caribou
 # needed for settings
-Requires:	python-cairo
+Requires:	      python-cairo
 Requires:       python-gi
 Requires:       python-dbus
 Requires:       python-lxml
@@ -99,8 +99,8 @@ Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
 Requires:       python-pillow
-Requires:	python2-imaging
-Requires:	python2-gi
+Requires:	      python2-imaging
+Requires:	      python2-gi
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
@@ -109,7 +109,8 @@ Requires:       gnome-themes-standard
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
 Requires:       typelib(Soup)
-Requires:	typelib(xfixes)
+Requires:	      typelib(xfixes)
+Requires:       typelib(TimezoneMap)
 Requires:       nemo
 
 # include cjs introspection
