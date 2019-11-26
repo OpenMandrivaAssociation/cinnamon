@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.4.1
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -129,6 +129,17 @@ Requires:       python-polib
 
 Requires:	typelib(Keybinder) = 3.0
 Requires:	libgnomekbd-common
+
+#Few optional app to meet the minimum operational requirements of the environment
+Recommends: blueberry
+Recommends: pix
+Recommends: xed
+Recommends: xviewer
+Recommends: xreader
+Recommends: xplayer
+
+Recommends: om-mirror-selector
+
 
 # cinnamon handles notifications natively, no notification-daemon needed
 Provides:       virtual-notification-daemon
