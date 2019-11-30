@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        4.4.1
-Release:        2
+Version:        4.4.2
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
