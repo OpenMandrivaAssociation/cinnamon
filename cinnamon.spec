@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        4.4.5
+Version:        4.4.6
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
