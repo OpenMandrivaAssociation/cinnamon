@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        4.4.6
+Version:        4.4.8
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -7,7 +7,6 @@ Group:          Graphical desktop/Cinnamon
 # cinnamon-menu-editor is LGPLv2+
 License:        GPLv2+ and LGPLv2+
 URL:            http://cinnamon.linuxmint.com
-# To generate tarball
 
 Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
