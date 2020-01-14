@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.4.8
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -144,6 +144,7 @@ Recommends: om-mirror-selector
 Provides:       virtual-notification-daemon
 # and ditto for polkit authorisation dialogs
 Provides:       polkit-agent
+Provides:       task-cinnamon
 
 %description
 Cinnamon is a Linux desktop which provides advanced
