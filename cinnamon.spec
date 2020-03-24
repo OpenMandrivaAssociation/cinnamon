@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.4.8
-Release:        2
+Release:        3
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -99,7 +99,6 @@ Requires:       python-pam
 Requires:       python-pexpect
 Requires:       python-pillow
 Requires:	      python2-imaging
-Requires:	      python2-gi
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
