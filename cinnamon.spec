@@ -180,7 +180,9 @@ export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 --disable-static \
 --disable-rpath \
 --enable-compile-warnings=yes \
---enable-introspection=yes
+--enable-introspection=yes \
+-with-ca-certificates=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+
 %make_build V=1
 
 %install
