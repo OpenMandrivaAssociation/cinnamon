@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.6.6
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -98,7 +98,6 @@ Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
 Requires:       python-pillow
-Requires:	      python2-imaging
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
@@ -228,5 +227,3 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_libdir}/cinnamon/
 %{_libexecdir}/cinnamon/
 %{_mandir}/man1/*.1.*
-
-
