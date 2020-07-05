@@ -181,7 +181,7 @@ export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 --disable-rpath \
 --enable-compile-warnings=yes \
 --enable-introspection=yes \
--with-ca-certificates=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+--with-ca-certificates=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
 
 %make_build V=1
 
