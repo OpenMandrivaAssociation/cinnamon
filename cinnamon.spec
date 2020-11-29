@@ -65,7 +65,9 @@ BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires: pkgconfig(libcinnamon-menu-3.0)
 BuildRequires: pkgconfig(mozjs-52)
+%ifnarch %ix86
 BuildRequires: pkgconfig(mozjs-78)
+%endif
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
 
