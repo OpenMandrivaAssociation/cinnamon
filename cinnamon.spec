@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        4.6.7
+Version:        4.8.0
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -24,52 +24,54 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 %global json_glib_version 0.13.2
 %global polkit_version 0.100
 
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  desktop-file-utils
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
-BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
+BuildRequires: meson
+BuildRequires: pkgconfig(dbus-glib-1)
+BuildRequires: desktop-file-utils
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
+BuildRequires: pkgconfig(json-glib-1.0) >= %{json_glib_version}
 BuildRequires:	pkgconfig(libnm)
-BuildRequires:  pkgconfig(polkit-agent-1) >= %{polkit_version}
-BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires: pkgconfig(polkit-agent-1) >= %{polkit_version}
+BuildRequires: pkgconfig(gudev-1.0)
 # for screencast recorder functionality
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  intltool
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.2
-BuildRequires:  pkgconfig(gnome-keyring-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires: pkgconfig(gstreamer-1.0)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: intltool
+BuildRequires: pkgconfig(libcanberra)
+BuildRequires: pkgconfig(libcroco-0.6) >= 0.6.2
+BuildRequires: pkgconfig(gnome-keyring-1)
+BuildRequires: pkgconfig(libsoup-2.4)
+BuildRequires: pkgconfig(libstartup-notification-1.0)
 
 # for barriers
-BuildRequires:  pkgconfig(xfixes) >= 5.0
+BuildRequires: pkgconfig(xfixes) >= 5.0
 # used in unused BigThemeImage
-BuildRequires:  librsvg2-devel
-BuildRequires:  pkgconfig(libmuffin) >= %{muffin_version}
-BuildRequires:  pulseaudio-devel
+BuildRequires: librsvg2-devel
+BuildRequires: pkgconfig(libmuffin) >= %{muffin_version}
+BuildRequires: pulseaudio-devel
 # Bootstrap requirements
 BuildRequires: gtk-doc 
 BuildRequires: gnome-common
 
-BuildRequires:  pkgconfig(libwacom)
-BuildRequires:  pkgconfig(xorg-wacom)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(cjs-1.0)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(cinnamon-desktop) >= 2.0.4
-BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
-BuildRequires:	 pkgconfig(mozjs-52)
-BuildRequires:  egl-devel
-BuildRequires:  ca-certificates
+BuildRequires: pkgconfig(libwacom)
+BuildRequires: pkgconfig(xorg-wacom)
+BuildRequires: pkgconfig(xtst)
+BuildRequires: pkgconfig(gio-2.0)
+BuildRequires: pkgconfig(gio-unix-2.0)
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(gdk-x11-3.0)
+BuildRequires: pkgconfig(cjs-1.0)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
+BuildRequires: pkgconfig(libcinnamon-menu-3.0)
+BuildRequires: pkgconfig(mozjs-52)
+BuildRequires: pkgconfig(mozjs-78)
+BuildRequires: egl-devel
+BuildRequires: ca-certificates
 
 #required for applet fix
-BuildRequires:  patchelf
-BuildRequires:  chrpath
+BuildRequires: patchelf
+BuildRequires: chrpath
 
 Requires:       cinnamon-menus
 # wrapper script uses to restart old GNOME session if run --replace
@@ -168,25 +170,15 @@ rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,u
 
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
-rm -f configure
-rm -rf debian/
-
-NOCONFIGURE=1 ./autogen.sh
-
 %build
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 
-%configure \
---disable-static \
---disable-rpath \
---enable-compile-warnings=yes \
---enable-introspection=yes \
---with-ca-certificates=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+%meson
 
-%make_build V=1
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # Remove .la file
 rm -rf %{buildroot}/%{_libdir}/cinnamon/libcinnamon.la
@@ -224,9 +216,9 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
 %{_datadir}/cinnamon/
 %{_datadir}/cinnamon-*/
-%{_datadir}/gtk-doc/html/cinnamon*
+#{_datadir}/gtk-doc/html/cinnamon*
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
 %{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
-%{_libexecdir}/cinnamon/
+#{_libexecdir}/cinnamon/
 %{_mandir}/man1/*.1.*
