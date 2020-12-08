@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        4.8.0
+Version:        4.8.1
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -64,10 +64,7 @@ BuildRequires: pkgconfig(cjs-1.0)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires: pkgconfig(libcinnamon-menu-3.0)
-BuildRequires: pkgconfig(mozjs-52)
-%ifnarch %ix86
 BuildRequires: pkgconfig(mozjs-78)
-%endif
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
 
