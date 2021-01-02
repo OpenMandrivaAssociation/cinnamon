@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.8.4
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -103,8 +103,6 @@ Requires:       python-pillow
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
-# fix 10916
-Requires:       gnome-themes-standard
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
 Requires:       typelib(Soup)
