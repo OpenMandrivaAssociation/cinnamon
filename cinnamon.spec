@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        4.8.5
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -109,6 +109,8 @@ Requires:       typelib(Soup)
 Requires:	      typelib(xfixes)
 Requires:       typelib(TimezoneMap)
 Requires:       nemo
+
+Requires:       xapp
 
 # include cjs introspection
 Requires:       cjs
