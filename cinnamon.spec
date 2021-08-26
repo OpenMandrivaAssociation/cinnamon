@@ -222,5 +222,5 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 #{_libexecdir}/cinnamon/
 %{_libexecdir}/cinnamon-hotplug-sniffer
 %{_libexecdir}/cinnamon-perf-helper
-
+%{python_sitelib}/cinnamon/
 %{_mandir}/man1/*.1.*
