@@ -215,12 +215,13 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
 %{_datadir}/cinnamon/
 %{_datadir}/cinnamon-*/
-#{_datadir}/gtk-doc/html/cinnamon*
+%{_datadir}/dbus-1/services/org.cinnamon.CalendarServer.service
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
 %{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
 #{_libexecdir}/cinnamon/
 %{_libexecdir}/cinnamon-hotplug-sniffer
 %{_libexecdir}/cinnamon-perf-helper
+%{_libexecdir}/cinnamon-calendar-server.py
 %{python_sitelib}/cinnamon/
 %{_mandir}/man1/*.1.*
