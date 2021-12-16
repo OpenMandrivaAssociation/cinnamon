@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        5.2.5
+Version:        5.2.6
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
