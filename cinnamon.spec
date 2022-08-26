@@ -68,6 +68,7 @@ BuildRequires: pkgconfig(libcinnamon-menu-3.0)
 BuildRequires: pkgconfig(mozjs-78)
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
+BuildRequires: pkgconfig(xapp)
 
 #required for applet fix
 BuildRequires: patchelf
