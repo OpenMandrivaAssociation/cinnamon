@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        5.2.7
-Release:        2
+Version:        5.4.11
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -16,11 +16,8 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 
 # from fedora
 #Patch0:         background.patch
-#Patch1:         autostart.patch
+Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
-
-# Upstream
-Patch10:  https://patch-diff.githubusercontent.com/raw/linuxmint/cinnamon/pull/10596.patch
 
 %global gobject_introspection_version 0.10.1
 %global muffin_version 4.0.2
@@ -46,17 +43,20 @@ BuildRequires: pkgconfig(libcroco-0.6) >= 0.6.2
 BuildRequires: pkgconfig(gnome-keyring-1)
 BuildRequires: pkgconfig(libsoup-2.4)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
-
+BuildRequires: pkgconfig(upower-glib)
 # for barriers
 BuildRequires: pkgconfig(xfixes) >= 5.0
 # used in unused BigThemeImage
+BuildRequires: pkgconfig(librsvg-2.0)
 BuildRequires: librsvg2-devel
-BuildRequires: pkgconfig(libmuffin) >= %{muffin_version}
+BuildRequires: pkgconfig(libmuffin-0) >= %{muffin_version}
 BuildRequires: pulseaudio-devel
+BuildRequires: pkgconfig(libpulse)
+BuildRequires: pkgconfig(gstreamer-1.0)
 # Bootstrap requirements
 BuildRequires: gtk-doc 
 BuildRequires: gnome-common
-
+BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: pkgconfig(libwacom)
 BuildRequires: pkgconfig(xorg-wacom)
 BuildRequires: pkgconfig(xtst)
@@ -68,15 +68,21 @@ BuildRequires: pkgconfig(cjs-1.0)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires: pkgconfig(libcinnamon-menu-3.0)
+BuildRequires: pkgconfig(libgnome-menu-3.0)
 BuildRequires: pkgconfig(mozjs-78)
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
+BuildRequires: pkgconfig(xapp)
+BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(colord)
 
 #required for applet fix
 BuildRequires: patchelf
 BuildRequires: chrpath
 
+Requires:       accountsservice
 Requires:       cinnamon-menus
+Requires:       gnome-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
@@ -113,8 +119,11 @@ Requires:       typelib(Soup)
 Requires:	      typelib(xfixes)
 Requires:       typelib(TimezoneMap)
 Requires:       nemo
-
+Requires:       gsound
 Requires:       xapp
+
+Requires:       metacity
+Requires:       tint2
 
 # include cjs introspection
 Requires:       cjs
@@ -216,6 +225,7 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*/*/*.svg
+%{_iconsdir}/hicolor/*x*/actions/cinnamon-hc*
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
 %{_datadir}/cinnamon/
 %{_datadir}/cinnamon-*/
