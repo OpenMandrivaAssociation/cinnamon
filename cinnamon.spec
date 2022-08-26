@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        5.2.7
-Release:        2
+Version:        5.4.11
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
