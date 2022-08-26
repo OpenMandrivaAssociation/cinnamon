@@ -51,7 +51,7 @@ BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(xfixes) >= 5.0
 # used in unused BigThemeImage
 BuildRequires: librsvg2-devel
-BuildRequires: pkgconfig(libmuffin) >= %{muffin_version}
+BuildRequires: pkgconfig(libmuffin-0) >= %{muffin_version}
 BuildRequires: pulseaudio-devel
 # Bootstrap requirements
 BuildRequires: gtk-doc 
