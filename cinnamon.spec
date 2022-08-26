@@ -214,6 +214,7 @@ chrpath -l %{buildroot}%{_bindir}/cinnamon
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/*/*/*.svg
+%{_iconsdir}/hicolor/*x*/actions/cinnamon-hc
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
 %{_datadir}/cinnamon/
 %{_datadir}/cinnamon-*/
