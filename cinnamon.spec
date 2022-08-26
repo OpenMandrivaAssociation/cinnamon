@@ -19,9 +19,6 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 #Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
 
-# Upstream
-Patch10:  https://patch-diff.githubusercontent.com/raw/linuxmint/cinnamon/pull/10596.patch
-
 %global gobject_introspection_version 0.10.1
 %global muffin_version 4.0.2
 %global eds_version 2.91.6
