@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        5.4.12
+Version:        5.6.4
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -30,6 +30,7 @@ BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: desktop-file-utils
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gobject-introspection-1.0) >= %{gobject_introspection_version}
+BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(json-glib-1.0) >= %{json_glib_version}
 BuildRequires:	pkgconfig(libnm)
 BuildRequires: pkgconfig(polkit-agent-1) >= %{polkit_version}
@@ -57,6 +58,7 @@ BuildRequires: pkgconfig(gstreamer-1.0)
 BuildRequires: gtk-doc 
 BuildRequires: gnome-common
 BuildRequires: pkgconfig(dbus-glib-1)
+BuildRequires: pkgconfig(libnotify)
 BuildRequires: pkgconfig(libwacom)
 BuildRequires: pkgconfig(xorg-wacom)
 BuildRequires: pkgconfig(xtst)
@@ -105,23 +107,38 @@ Requires:       caribou
 Requires:	      python-cairo
 Requires:       python-gi
 Requires:       python-dbus
+Requires:       python-distro
+Requires:       python-gobject3
 Requires:       python-lxml
 Requires:       python-imaging
 Requires:       python-pam
 Requires:       python-pexpect
+Requires:       python-pytz
 Requires:       python-pillow
+Requires:       python-requests
+Requires:       python-tinycss2
+# In unsupported repo
+Requires:       python-setproctitle
+Requires:       python-xapp
+
+# Not yet compiled
+#Requires:       mintlocale
+#Requires:       google-noto-sans-fonts
+
+Requires:       %{name}-desktop
 Requires:       cinnamon-control-center
 Requires:       cinnamon-screensaver
 Requires:       cinnamon-translations
 # fix cinnamon startup crashes
 Requires:       typelib(fontconfig)
 Requires:       typelib(Soup)
+Requires:       typelib(Rsvg)
 Requires:	      typelib(xfixes)
 Requires:       typelib(TimezoneMap)
 Requires:       nemo
 Requires:       gsound
 Requires:       xapp
-
+Requires:       gnome-backgrounds
 Requires:       metacity
 Requires:       tint2
 
@@ -139,6 +156,9 @@ Requires:       python-pyinotify
 #needed for cinnamon-json-makepot
 Requires:       python-polib
 
+Requires:       wget
+Requires:       cups-common
+Requires:       gettext
 Requires:	typelib(Keybinder) = 3.0
 Requires:	libgnomekbd-common
 
