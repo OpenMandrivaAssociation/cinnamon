@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        5.6.7
+Version:        5.8.1
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -81,6 +81,8 @@ BuildRequires: pkgconfig(colord)
 #required for applet fix
 BuildRequires: patchelf
 BuildRequires: chrpath
+
+Recommends:     touchegg
 
 Requires:       accountsservice
 Requires:       cinnamon-menus
