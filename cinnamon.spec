@@ -78,6 +78,8 @@ BuildRequires: pkgconfig(xapp)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(colord)
 
+BuildRequires: typelib(CDesktopEnums)
+
 #required for applet fix
 BuildRequires: patchelf
 BuildRequires: chrpath
