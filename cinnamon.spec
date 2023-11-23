@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        5.8.4
+Version:        5.9.0.git.20231122
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -8,7 +8,8 @@ Group:          Graphical desktop/Cinnamon
 License:        GPLv2+ and LGPLv2+
 URL:            http://cinnamon.linuxmint.com
 
-Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        cinnamon-5.9.0.tar.xz
+#Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
 # fix power applet using version by robin92
 # https://github.com/linuxmint/Cinnamon/issues/3068
@@ -18,9 +19,11 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 #Patch0:         background.patch
 Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
+Patch2:  0001-add-xdg-portal-conf.patch
+Patch3:  5eda3d4d8a65517062b48354fb17966a39ceaeca.patch
 
 %global gobject_introspection_version 0.10.1
-%global muffin_version 4.0.2
+%global muffin_version 6.0.0
 %global eds_version 2.91.6
 %global json_glib_version 0.13.2
 %global polkit_version 0.100
@@ -42,7 +45,7 @@ BuildRequires: intltool
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(libcroco-0.6) >= 0.6.2
 BuildRequires: pkgconfig(gnome-keyring-1)
-BuildRequires: pkgconfig(libsoup-2.4)
+BuildRequires: pkgconfig(libsoup-3.0)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(upower-glib)
 # for barriers
@@ -193,7 +196,7 @@ The emphasis is put on making users feel at home and providing
  them with an easy to use and comfortable desktop experience.
 
 %prep
-%setup -q -n cinnamon-%{version}
+%setup -q -n cinnamon-5.9.0
 %autopatch -p1
 
 # have cinnamon use mageia app system
