@@ -47,6 +47,16 @@ BuildRequires: pkgconfig(gnome-keyring-1)
 BuildRequires: pkgconfig(libsoup-3.0)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-wayland-3.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-no-export-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(cinnamon-desktop) >= 6.0.0
+BuildRequires:  pkgconfig(gail-3.0) 
 # for barriers
 BuildRequires: pkgconfig(xfixes) >= 5.0
 # used in unused BigThemeImage
@@ -73,9 +83,10 @@ BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires: pkgconfig(libcinnamon-menu-3.0)
 BuildRequires: pkgconfig(libgnome-menu-3.0)
-BuildRequires: pkgconfig(mozjs-78)
+BuildRequires: pkgconfig(mozjs-102)
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
+BuildRequires: pkgconfig(pango)
 BuildRequires: pkgconfig(xapp)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(colord)
@@ -250,6 +261,8 @@ desktop-file-install                                 \
 %{_datadir}/desktop-directories/cinnamon-*.directory
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
+%{_datadir}/wayland-sessions/cinnamon-wayland.desktop
+%{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_iconsdir}/hicolor/*x*/actions/cinnamon-hc*
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
