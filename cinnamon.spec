@@ -47,16 +47,6 @@ BuildRequires: pkgconfig(gnome-keyring-1)
 BuildRequires: pkgconfig(libsoup-3.0)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(upower-glib)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk+-wayland-3.0)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gmodule-no-export-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(cinnamon-desktop) >= 6.0.0
-BuildRequires:  pkgconfig(gail-3.0) 
 # for barriers
 BuildRequires: pkgconfig(xfixes) >= 5.0
 # used in unused BigThemeImage
