@@ -20,7 +20,6 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
 Patch2:  0001-add-xdg-portal-conf.patch
-Patch3:  5eda3d4d8a65517062b48354fb17966a39ceaeca.patch
 
 %global gobject_introspection_version 0.10.1
 %global muffin_version 6.0.0
