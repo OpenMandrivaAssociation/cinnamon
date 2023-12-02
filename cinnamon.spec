@@ -194,7 +194,7 @@ The emphasis is put on making users feel at home and providing
  them with an easy to use and comfortable desktop experience.
 
 %prep
-%setup -q -n cinnamon-5.9.0
+%setup -q -n cinnamon-%{version}
 %autopatch -p1
 
 # have cinnamon use mageia app system
