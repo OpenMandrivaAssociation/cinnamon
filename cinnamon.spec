@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        5.9.0.git.20231122
+Version:        6.0.0
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -8,18 +8,15 @@ Group:          Graphical desktop/Cinnamon
 License:        GPLv2+ and LGPLv2+
 URL:            http://cinnamon.linuxmint.com
 
-Source0:        cinnamon-5.9.0.tar.xz
-#Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
 # fix power applet using version by robin92
 # https://github.com/linuxmint/Cinnamon/issues/3068
 #Source7:        power-applet.js
-
+Patch0:         background.patch
 # from fedora
-#Patch0:         background.patch
 Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
-Patch2:  0001-add-xdg-portal-conf.patch
 
 %global gobject_introspection_version 0.10.1
 %global muffin_version 6.0.0
