@@ -13,7 +13,7 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 # fix power applet using version by robin92
 # https://github.com/linuxmint/Cinnamon/issues/3068
 #Source7:        power-applet.js
-Patch0:         background.patch
+#Patch0:         background.patch
 # from fedora
 Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
@@ -92,7 +92,8 @@ Requires:       gnome-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
 Requires:       gobject-introspection >= %{gobject_introspection_version}
-Requires:	gnome-terminal
+Requires:       gnome-terminal
+Requires:       gnome-backgrounds
 # needed as it is now split from Clutter
 Requires:       json-glib >= %{json_glib_version}
 # might be still be needed.
@@ -205,6 +206,12 @@ rm -rf files%{_sysconfdir}/xdg
 rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
 
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
+
+# https://github.com/linuxmint/cinnamon/issues/3575#issuecomment-374887122
+# Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
+sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
+    files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
+
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
