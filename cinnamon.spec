@@ -256,7 +256,7 @@ desktop-file-install                                 \
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/applications/*
 %{_datadir}/wayland-sessions/cinnamon-wayland.desktop
-%{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
+#{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_iconsdir}/hicolor/*x*/actions/cinnamon-hc*
 %{_datadir}/polkit-1/actions/org.cinnamon.settings-users.policy
