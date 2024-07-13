@@ -264,6 +264,7 @@ desktop-file-install                                 \
 %{_datadir}/cinnamon-*/
 %{_datadir}/dbus-1/services/org.cinnamon.CalendarServer.service
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
+%{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
 %{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
 #{_libexecdir}/cinnamon/
