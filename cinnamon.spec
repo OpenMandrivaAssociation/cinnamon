@@ -6,7 +6,7 @@ Summary:        Window management and application launching for Cinnamon
 Group:          Graphical desktop/Cinnamon
 # cinnamon-menu-editor is LGPLv2+
 License:        GPLv2+ and LGPLv2+
-URL:            http://cinnamon.linuxmint.com
+URL:            https://cinnamon.linuxmint.com
 
 Source0:        https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}-%{version}.tar.gz
 Source3:        polkit-cinnamon-authentication-agent-1.desktop
