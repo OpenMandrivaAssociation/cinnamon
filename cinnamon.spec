@@ -1,6 +1,6 @@
 Name:           cinnamon
 Version:        6.2.9
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -145,7 +145,7 @@ Requires:       gsound
 Requires:       xapp
 Requires:       gnome-backgrounds
 Requires:       metacity
-Requires:       tint2
+#Requires:       tint2
 
 # include cjs introspection
 Requires:       cjs
