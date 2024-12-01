@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        6.2.9
-Release:        2
+Version:        6.4.0
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -58,6 +58,7 @@ BuildRequires: gtk-doc
 BuildRequires: gnome-common
 BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: pkgconfig(libnotify)
+BuildRequires: pkgconfig(libsecret-1)
 BuildRequires: pkgconfig(libwacom)
 BuildRequires: pkgconfig(xorg-wacom)
 BuildRequires: pkgconfig(xtst)
@@ -65,12 +66,13 @@ BuildRequires: pkgconfig(gio-2.0)
 BuildRequires: pkgconfig(gio-unix-2.0)
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(gdk-x11-3.0)
+BuildRequires: pkgconfig(gcr-base-3)
 BuildRequires: pkgconfig(cjs-1.0)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(cinnamon-desktop) >= 2.0.4
 BuildRequires: pkgconfig(libcinnamon-menu-3.0)
 BuildRequires: pkgconfig(libgnome-menu-3.0)
-BuildRequires: pkgconfig(mozjs-102)
+#BuildRequires: pkgconfig(mozjs-102)
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
 BuildRequires: pkgconfig(pango)
