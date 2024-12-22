@@ -81,6 +81,7 @@ BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(colord)
 
 BuildRequires: typelib(CDesktopEnums)
+BuildRequires: python-libsass
 
 #required for applet fix
 BuildRequires: patchelf
@@ -127,6 +128,7 @@ Requires:       python-tinycss2
 # In unsupported repo
 Requires:       python-setproctitle
 Requires:       python-xapp
+Requires:       python-libsass
 
 # Not yet compiled
 #Requires:       mintlocale
