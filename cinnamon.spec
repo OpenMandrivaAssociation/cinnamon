@@ -272,3 +272,5 @@ desktop-file-install                                 \
 %{_mandir}/man1/*.1.*
 #{_datadir}/gir-1.0/Cinnamon-0.1.gir
 #{_datadir}/gir-1.0/St-1.0.gir
+%{_sysconfdir}/xdg/menus/cinnamon-applications-merged
+%{_sysconfdir}/xdg/menus/cinnamon-applications.menu
