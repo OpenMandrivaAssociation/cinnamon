@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        6.4.7
+Version:        6.4.8
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -149,7 +149,7 @@ Requires:       gsound
 Requires:       xapp
 Requires:       gnome-backgrounds
 Requires:       metacity
-#Requires:       tint2
+Requires:       tint2
 
 # include cjs introspection
 Requires:       cjs
@@ -179,7 +179,7 @@ Recommends: xviewer
 Recommends: xreader
 Recommends: xplayer
 
-Recommends: om-mirror-selector
+#Recommends: om-mirror-selector
 
 
 # cinnamon handles notifications natively, no notification-daemon needed
@@ -201,13 +201,6 @@ The emphasis is put on making users feel at home and providing
 %setup -q -n cinnamon-%{version}
 %autopatch -p1
 
-# have cinnamon use mageia app system
-grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
-xargs sed -i -e 's@cinnamon-applications@applications@g' 
-
-# files replaced with mageia files
-rm -rf files%{_sysconfdir}/xdg
-rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
 
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
@@ -279,3 +272,5 @@ desktop-file-install                                 \
 %{_mandir}/man1/*.1.*
 #{_datadir}/gir-1.0/Cinnamon-0.1.gir
 #{_datadir}/gir-1.0/St-1.0.gir
+%{_sysconfdir}/xdg/menus/cinnamon-applications-merged
+%{_sysconfdir}/xdg/menus/cinnamon-applications.menu
