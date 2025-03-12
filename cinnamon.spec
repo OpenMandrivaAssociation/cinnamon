@@ -168,8 +168,8 @@ Requires: python-polib
 Requires: wget
 Requires: cups-common
 Requires: gettext
-Requires:	typelib(Keybinder) = 3.0
-Requires:	libgnomekbd-common
+Requires: typelib(Keybinder) = 3.0
+Requires: libgnomekbd-common
 
 #Few optional app to meet the minimum operational requirements of the environment
 Recommends: blueberry
