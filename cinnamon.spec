@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        6.4.7
+Version:        6.4.8
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -89,85 +89,85 @@ BuildRequires: chrpath
 
 Recommends:     touchegg
 
-Requires:       accountsservice
-Requires:       cinnamon-menus
-Requires:       gnome-menus
+Requires: accountsservice
+Requires: cinnamon-menus
+Requires: gnome-menus
 # wrapper script uses to restart old GNOME session if run --replace
 # from the command line
-Requires:       gobject-introspection >= %{gobject_introspection_version}
-Requires:       gnome-terminal
-Requires:       gnome-backgrounds
+Requires: gobject-introspection >= %{gobject_introspection_version}
+Requires: gnome-terminal
+Requires: gnome-backgrounds
 # needed as it is now split from Clutter
-Requires:       json-glib >= %{json_glib_version}
+Requires: json-glib >= %{json_glib_version}
 # might be still be needed.
-Requires:       muffin >= %{muffin_version}
+Requires: muffin >= %{muffin_version}
 # Get upower 1.0 api changes
-Requires:       upower >= 0.99.0
-Requires:       polkit >= 0.100
+Requires: upower >= 0.99.0
+Requires: polkit >= 0.100
 # needed for session files
 # cinnamon-session version fixes location of helper app
-Requires:       cinnamon-session
+Requires: cinnamon-session
 # needed for schemas
-Requires:       at-spi2-atk
+Requires: at-spi2-atk
 # needed for on-screen keyboard
-Requires:       caribou
+Requires: caribou
 # needed for settings
-Requires:	      python-cairo
-Requires:       python-gi
-Requires:       python-dbus
-Requires:       python-distro
-Requires:       python-gobject3
-Requires:       python-lxml
-Requires:       python-imaging
-Requires:       python-pam
-Requires:       python-pexpect
-Requires:       python-pytz
-Requires:       python-pillow
-Requires:       python-requests
-Requires:       python-tinycss2
-# In unsupported repo
-Requires:       python-setproctitle
-Requires:       python-xapp
-Requires:       python-libsass
+Requires: python-cairo
+Requires: python-gi
+Requires: python-dbus
+Requires: python-distro
+Requires: python-gobject3
+Requires: python-lxml
+Requires: python-imaging
+Requires: python-pam
+Requires: python-pexpect
+Requires: python-pytz
+Requires: python-pillow
+Requires: python-requests
+Requires: python-tinycss2
+# In extra repo
+Requires: python-setproctitle
+Requires: python-xapp
+Requires: python-libsass
 
 # Not yet compiled
 #Requires:       mintlocale
 #Requires:       google-noto-sans-fonts
 
-Requires:       %{name}-desktop
-Requires:       cinnamon-control-center
-Requires:       cinnamon-screensaver
-Requires:       cinnamon-translations
+Requires: %{name}-desktop
+Requires: cinnamon-control-center
+Requires: cinnamon-screensaver
+Requires: cinnamon-translations
 # fix cinnamon startup crashes
-Requires:       typelib(fontconfig)
-Requires:       typelib(Soup)
-Requires:       typelib(Rsvg)
-Requires:	      typelib(xfixes)
-Requires:       typelib(TimezoneMap)
-Requires:       nemo
-Requires:       gsound
-Requires:       xapp
-Requires:       gnome-backgrounds
-Requires:       metacity
-#Requires:       tint2
+Requires: typelib(fontconfig)
+Requires: typelib(Soup)
+Requires: typelib(Rsvg)
+Requires: typelib(xfixes)
+Requires: typelib(TimezoneMap)
+Requires: nemo
+Requires: gsound
+Requires: xapp
+Requires: gnome-backgrounds
+Requires: metacity
+Requires: tint2
 
 # include cjs introspection
-Requires:       cjs
+Requires: cjs
 # Mate polkit
-Requires:       mate-polkit
+Requires: mate-polkit
 # requires for keyboard applet
-Requires:       gucharmap
+Requires: gucharmap
 
 # required for network applet
-Requires:       networkmanager-applet
+Requires: networkmanager-applet
 #needed for cinnamon-looking-glass
-Requires:       python-pyinotify
+Requires: python-pyinotify
 #needed for cinnamon-json-makepot
-Requires:       python-polib
+Requires: python-polib
 
-Requires:       wget
-Requires:       cups-common
-Requires:       gettext
+Requires: wget
+Requires: cups-common
+Requires: gettext
 Requires:	typelib(Keybinder) = 3.0
 Requires:	libgnomekbd-common
 
@@ -178,9 +178,6 @@ Recommends: xed
 Recommends: xviewer
 Recommends: xreader
 Recommends: xplayer
-
-Recommends: om-mirror-selector
-
 
 # cinnamon handles notifications natively, no notification-daemon needed
 Provides:       virtual-notification-daemon
@@ -202,14 +199,14 @@ The emphasis is put on making users feel at home and providing
 %autopatch -p1
 
 # have cinnamon use mageia app system
-grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
-xargs sed -i -e 's@cinnamon-applications@applications@g' 
+#grep -r -l cinnamon-applications.menu files%{_datadir} files%{_bindir}  src | \
+#xargs sed -i -e 's@cinnamon-applications@applications@g' 
 
 # files replaced with mageia files
-rm -rf files%{_sysconfdir}/xdg
-rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
+#rm -rf files%{_sysconfdir}/xdg
+#rm -f files%{_datadir}/desktop-directories/cinnamon-{menu-applications,utility,utility-accessibility,development,education,game,graphics,network,audio-video,office,system-tools,other}.directory
 
-sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
+#sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
 # https://github.com/linuxmint/cinnamon/issues/3575#issuecomment-374887122
 # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
