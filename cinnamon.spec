@@ -15,7 +15,7 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 #Source7:        power-applet.js
 #Patch0:         background.patch
 # from fedora
-Patch1:         autostart.patch
+#Patch1:         autostart.patch
 #Patch1:		webkit_dep.patch
 
 %global gobject_introspection_version 0.10.1
@@ -25,6 +25,7 @@ Patch1:         autostart.patch
 %global polkit_version 0.100
 
 BuildRequires: meson
+BuildRequires: mold
 BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: desktop-file-utils
 BuildRequires: pkgconfig(glib-2.0)
@@ -212,8 +213,14 @@ sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
+%global optflags %{optflags} -fuse-ld=mold
+export CC=gcc
+export CXX=g++
 
-%meson
+%meson \
+ -Ddeprecated_warnings=false \
+ -Dpy3modules_dir=%{python3_sitelib} \
+ -Ddocs=false
 
 %meson_build
 
