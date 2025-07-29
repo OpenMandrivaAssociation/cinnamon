@@ -218,7 +218,6 @@ export CC=gcc
 export CXX=g++
 
 %meson \
- --libexecdir=%{_libexecdir}/cinnamon/ \
  -Ddeprecated_warnings=false \
  -Dpy3modules_dir=%{python3_sitelib} \
  -Ddocs=false
@@ -273,9 +272,9 @@ desktop-file-install                                 \
 %{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
 #{_libexecdir}/cinnamon/
-#{_libexecdir}/cinnamon-hotplug-sniffer
-#{_libexecdir}/cinnamon-perf-helper
-#{_libexecdir}/cinnamon-calendar-server.py
+%{_libexecdir}/cinnamon-hotplug-sniffer
+%{_libexecdir}/cinnamon-perf-helper
+%{_libexecdir}/cinnamon-calendar-server.py
 %{python_sitelib}/cinnamon/
 %{_mandir}/man1/*.1.*
 #{_datadir}/gir-1.0/Cinnamon-0.1.gir
