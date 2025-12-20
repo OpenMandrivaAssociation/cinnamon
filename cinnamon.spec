@@ -1,5 +1,5 @@
 Name:           cinnamon
-Version:        6.4.12
+Version:        6.6.2
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
@@ -24,7 +24,11 @@ Source3:        polkit-cinnamon-authentication-agent-1.desktop
 %global json_glib_version 0.13.2
 %global polkit_version 0.100
 
-BuildRequires: meson
+BuildSystem:   meson
+BuildOption:    -Ddeprecated_warnings=false
+BuildOption:    -Dpy3modules_dir=%{python3_sitelib}
+BuildOption:    -Ddocs=false
+
 BuildRequires: mold
 BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: desktop-file-utils
@@ -61,7 +65,7 @@ BuildRequires: pkgconfig(dbus-glib-1)
 BuildRequires: pkgconfig(libnotify)
 BuildRequires: pkgconfig(libsecret-1)
 BuildRequires: pkgconfig(libwacom)
-BuildRequires: pkgconfig(xorg-wacom)
+# BuildRequires: pkgconfig(xorg-wacom)
 BuildRequires: pkgconfig(xtst)
 BuildRequires: pkgconfig(gio-2.0)
 BuildRequires: pkgconfig(gio-unix-2.0)
@@ -77,7 +81,7 @@ BuildRequires: pkgconfig(libgnome-menu-3.0)
 BuildRequires: egl-devel
 BuildRequires: ca-certificates
 BuildRequires: pkgconfig(pango)
-BuildRequires: pkgconfig(xapp)
+BuildRequires: python-xapp
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(colord)
 
@@ -111,7 +115,7 @@ Requires:       cinnamon-session
 # needed for schemas
 Requires:       at-spi2-atk
 # needed for on-screen keyboard
-Requires:       caribou
+# Requires:       caribou
 # needed for settings
 Requires:	      python-cairo
 Requires:       python-gi
@@ -198,10 +202,8 @@ The underlying technology is forked from Gnome Shell.
 The emphasis is put on making users feel at home and providing
  them with an easy to use and comfortable desktop experience.
 
-%prep
-%setup -q -n cinnamon-%{version}
-%autopatch -p1
-
+%prep -a
+# %autosetup -n cinnamon-%{version}
 
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
@@ -211,22 +213,14 @@ sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-
     files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
 
 
-%build
+%conf -p
 export CFLAGS="$RPM_OPT_FLAGS -Wno-error=deprecated-declarations"
 %global optflags %{optflags} -fuse-ld=mold
 export CC=gcc
 export CXX=g++
 
-%meson \
- -Ddeprecated_warnings=false \
- -Dpy3modules_dir=%{python3_sitelib} \
- -Ddocs=false
 
-%meson_build
-
-%install
-%meson_install
-
+%install -a
 # Remove .la file
 rm -rf %{buildroot}/%{_libdir}/cinnamon/libcinnamon.la
 
