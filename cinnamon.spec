@@ -1,6 +1,6 @@
 Name:           cinnamon
-Version:        6.6.2
-Release:        3
+Version:        6.6.9
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
