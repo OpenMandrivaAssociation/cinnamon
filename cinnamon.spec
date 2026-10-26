@@ -82,6 +82,7 @@ BuildRequires: egl-devel
 BuildRequires: ca-certificates
 BuildRequires: pkgconfig(pango)
 BuildRequires: python-xapp
+BuildRequires: pkgconfig(xapp)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(colord)
 
