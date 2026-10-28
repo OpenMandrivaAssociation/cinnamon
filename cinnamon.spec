@@ -1,5 +1,3 @@
-%global __requires_exclude ^typelib\\(ICal\\) = 4\\.0$
-
 Name:           cinnamon
 Version:        6.6.9
 Release:        2
@@ -178,8 +176,6 @@ Requires:       cups-common
 Requires:       gettext
 Requires:	typelib(Keybinder) = 3.0
 Requires:	libgnomekbd-common
-#needed because of new changes to cinnamon-calendar-server
-Requires:       typelib(ICal) = 3.0
 
 #Few optional app to meet the minimum operational requirements of the environment
 Recommends: blueberry
