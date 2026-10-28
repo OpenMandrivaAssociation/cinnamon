@@ -1,3 +1,5 @@
+%global __requires_exclude ^typelib\\(ICal\\) = 3\\.0$
+
 Name:           cinnamon
 Version:        6.6.9
 Release:        2
