@@ -1,6 +1,8 @@
+%global __requires_exclude ^typelib\\(ICal\\) = 4\\.0$
+
 Name:           cinnamon
 Version:        6.6.9
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -176,6 +178,8 @@ Requires:       cups-common
 Requires:       gettext
 Requires:	typelib(Keybinder) = 3.0
 Requires:	libgnomekbd-common
+#needed because of new changes to cinnamon-calendar-server
+Requires:       typelib(ICal) = 3.0
 
 #Few optional app to meet the minimum operational requirements of the environment
 Recommends: blueberry
@@ -208,8 +212,8 @@ The emphasis is put on making users feel at home and providing
 
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 # muffin 6.4 renamed this header.
-find . -type f \( -name '*.c' -o -name '*.h' \) -print0 |
-	xargs -0 sed -i 's|meta/compositor-muffin.h|meta/compositor-mutter.h|g'
+#find . -type f \( -name '*.c' -o -name '*.h' \) -print0 |
+#	xargs -0 sed -i 's|meta/compositor-muffin.h|meta/compositor-mutter.h|g'
 
 # https://github.com/linuxmint/cinnamon/issues/3575#issuecomment-374887122
 # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
