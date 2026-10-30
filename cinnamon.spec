@@ -2,7 +2,7 @@
 
 Name:           cinnamon
 Version:        6.6.9
-Release:        2
+Release:        3
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -120,7 +120,7 @@ Requires:       at-spi2-atk
 # needed for on-screen keyboard
 # Requires:       caribou
 # needed for settings
-Requires:	      python-cairo
+Requires:       python-cairo
 Requires:       python-gi
 Requires:       python-dbus
 Requires:       python-distro
@@ -150,7 +150,7 @@ Requires:       cinnamon-translations
 Requires:       typelib(fontconfig)
 Requires:       typelib(Soup)
 Requires:       typelib(Rsvg)
-Requires:	      typelib(xfixes)
+Requires:       typelib(xfixes)
 Requires:       typelib(TimezoneMap)
 Requires:       nemo
 Requires:       gsound
@@ -176,8 +176,18 @@ Requires:       python-polib
 Requires:       wget
 Requires:       cups-common
 Requires:       gettext
-Requires:	typelib(Keybinder) = 3.0
-Requires:	libgnomekbd-common
+Requires:       typelib(Keybinder) = 3.0
+Requires:       libgnomekbd-common
+#Starting cleanup early
+Requires:       cinnamon-settings-daemon
+Requires:       xapp-symbolic-icons
+Requires:       mint-x-icons
+Requires:       mint-y-icons
+Requires:       mint-themes
+Requires:       cinnamon-themes
+Requires:       lib64cjs-gir1.0
+Requires:       openmandriva-cinnamon-config
+Requires:       lib64gcr-gir1
 
 #Few optional app to meet the minimum operational requirements of the environment
 Recommends: blueberry
