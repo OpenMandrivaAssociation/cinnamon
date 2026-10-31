@@ -2,7 +2,7 @@
 
 Name:           cinnamon
 Version:        6.6.9
-Release:        3
+Release:        4
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -195,7 +195,7 @@ Recommends: pix
 Recommends: xed
 Recommends: xviewer
 Recommends: xreader
-Recommends: xplayer
+#Recommends: xplayer
 
 #Recommends: om-mirror-selector
 
