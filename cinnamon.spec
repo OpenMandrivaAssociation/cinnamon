@@ -1,8 +1,8 @@
 %global __requires_exclude ^typelib\\(ICal\\) = 3\\.0$
 
 Name:           cinnamon
-Version:        6.6.9
-Release:        4
+Version:        6.8.0
+Release:        1
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -95,6 +95,7 @@ BuildRequires: python-libsass
 BuildRequires: patchelf
 BuildRequires: chrpath
 
+BuildRequires: pkgconfig(gtk4-layer-shell-0)
 Recommends:     touchegg
 
 Requires:       accountsservice
@@ -187,14 +188,22 @@ Requires:       mint-themes
 Requires:       cinnamon-themes
 Requires:       lib64cjs-gir1.0
 Requires:       openmandriva-cinnamon-config
-Requires:       lib64gcr-gir1
+Requires:       typelib(Gcr)
+Requires:	pkgconfig(gtk4-layer-shell-0)
+Requires:       fcitx5-gtk4
+
 
 #Few optional app to meet the minimum operational requirements of the environment
 Recommends: blueberry
-Recommends: pix
 Recommends: xed
-Recommends: xviewer
 Recommends: xreader
+Recommends: pix
+Recommends: xviewer
+Recommends: superlight 
+Recommends: unfold
+Recommends: xepub
+Recommends: sticky
+Recommends: thingy
 #Recommends: xplayer
 
 #Recommends: om-mirror-selector
@@ -244,7 +253,6 @@ rm -rf %{buildroot}/%{_libdir}/cinnamon/libcinnamon.la
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/applications/
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/cinnamon.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/cinnamon2d.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/polkit-cinnamon-authentication-agent-1.desktop
 
 desktop-file-install                                 \
@@ -264,6 +272,9 @@ desktop-file-install                                 \
 
 
 %files
+%exclude %{_libexecdir}/cinnamon-background-daemon*
+%exclude %{_libexecdir}/cinnamon-backup-locker*
+%exclude %{_libexecdir}/cinnamon-screensaver-pam-helper*
 %doc COPYING README.rst
 %{_bindir}/*
 %{_datadir}/desktop-directories/cinnamon-*.directory
@@ -278,16 +289,22 @@ desktop-file-install                                 \
 %{_datadir}/cinnamon-*/
 %{_datadir}/dbus-1/services/org.cinnamon.CalendarServer.service
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
+%{_datadir}/dbus-1/services/org.cinnamon.BackupLocker.service
 %{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
 %{_datadir}/xsessions/*
 %{_libdir}/cinnamon/
+/usr/lib/systemd/user/cinnamon-background-daemon.service
 #{_libexecdir}/cinnamon/
 %{_libexecdir}/cinnamon-hotplug-sniffer
 %{_libexecdir}/cinnamon-perf-helper
 %{_libexecdir}/cinnamon-calendar-server.py
+%{_libexecdir}/cinnamon-background-daemon
+%{_libexecdir}/cinnamon-backup-locker
+%{_libexecdir}/cinnamon-screensaver-pam-helper
 %{python_sitelib}/cinnamon/
 %{_mandir}/man1/*.1.*
 #{_datadir}/gir-1.0/Cinnamon-0.1.gir
 #{_datadir}/gir-1.0/St-1.0.gir
 %{_sysconfdir}/xdg/menus/cinnamon-applications-merged
 %{_sysconfdir}/xdg/menus/cinnamon-applications.menu
+%{_sysconfdir}/pam.d/cinnamon
