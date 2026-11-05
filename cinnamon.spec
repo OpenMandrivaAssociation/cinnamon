@@ -272,9 +272,6 @@ desktop-file-install                                 \
 
 
 %files
-%exclude %{_libexecdir}/cinnamon-background-daemon*
-%exclude %{_libexecdir}/cinnamon-backup-locker*
-%exclude %{_libexecdir}/cinnamon-screensaver-pam-helper*
 %doc COPYING README.rst
 %{_bindir}/*
 %{_datadir}/desktop-directories/cinnamon-*.directory
