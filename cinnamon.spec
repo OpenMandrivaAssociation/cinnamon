@@ -96,6 +96,19 @@ BuildRequires: patchelf
 BuildRequires: chrpath
 
 BuildRequires: pkgconfig(gtk4-layer-shell-0)
+BuildRequires:  pkgconfig(atk-bridge-2.0)
+BuildRequires:  pkgconfig(atspi-2)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libnma)
+BuildRequires:  lib64pam-devel
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(libxdo)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  meson
+BuildRequires:  python
+BuildRequires:  pkgconfig(libsystemd)
+
 Recommends:     touchegg
 
 Requires:       accountsservice
