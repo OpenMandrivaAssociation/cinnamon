@@ -2,7 +2,7 @@
 
 Name:           cinnamon
 Version:        6.8.0
-Release:        1
+Release:        2
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -201,6 +201,7 @@ Requires:       mint-themes
 Requires:       cinnamon-themes
 Requires:       lib64cjs-gir1.0
 Requires:       openmandriva-cinnamon-config
+Requires:       lib64gcr-gir1
 Requires:       typelib(Gcr)
 Requires:	pkgconfig(gtk4-layer-shell-0)
 Requires:       fcitx5-gtk4
