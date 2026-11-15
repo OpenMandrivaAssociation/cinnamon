@@ -2,7 +2,7 @@
 
 Name:           cinnamon
 Version:        6.8.0
-Release:        2
+Release:        3
 Summary:        Window management and application launching for Cinnamon
 
 Group:          Graphical desktop/Cinnamon
@@ -218,6 +218,9 @@ Recommends: unfold
 Recommends: xepub
 Recommends: sticky
 Recommends: thingy
+Recommends: velocitty
+Recommends: hypnotix
+Recommends: timeshift
 #Recommends: xplayer
 
 #Recommends: om-mirror-selector
