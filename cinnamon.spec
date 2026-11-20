@@ -1,7 +1,7 @@
 %global __requires_exclude ^typelib\\(ICal\\) = 3\\.0$
 
 Name:           cinnamon
-Version:        6.8.3
+Version:        6.8.4
 Release:        1
 Summary:        Window management and application launching for Cinnamon
 
